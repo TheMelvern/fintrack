@@ -1,0 +1,287 @@
+/* Shared styles for all authentication screens (onboarding, signup, etc.) */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff, #ccfbf1);
+}
+
+.mascot-section {
+  margin-bottom: var(--spacing-space-lg);
+}
+
+.mascot-image {
+  width: var(--mascot-avatar-sm);
+  height: var(--mascot-avatar-sm);
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .mascot-image {
+    width: var(--mascot-avatar-md);
+    height: var(--mascot-avatar-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mascot-image {
+    width: var(--mascot-avatar-lg);
+    height: var(--mascot-avatar-lg);
+  }
+}
+
+.auth-title {
+  margin-top: var(--spacing-space-md);
+  font-family: var(--font-family-headline);
+  font-size: var(--text-headline-xl);
+  font-weight: var(--text-headline-xl--font-weight);
+  line-height: var(--text-headline-xl--line-height);
+  letter-spacing: var(--text-headline-xl--letter-spacing);
+  color: var(--color-on-surface);
+  text-align: center;
+}
+
+.auth-subtitle {
+  margin-top: var(--spacing-space-sm);
+  font-family: var(--font-family-sans);
+  font-size: var(--text-body-md);
+  color: var(--color-on-surface-variant);
+  text-align: center;
+}
+
+.auth-form {
+  margin-top: var(--spacing-space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-space-md);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-space-xs);
+  text-align: left;
+}
+
+.form-label {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-label-md);
+  font-weight: var(--text-label-md--font-weight);
+  letter-spacing: var(--text-label-md--letter-spacing);
+  color: var(--color-on-surface-variant);
+  margin-left: var(--spacing-space-xs);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--spacing-space-sm) var(--spacing-space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-outline-variant);
+  background-color: var(--color-surface);
+  font-family: var(--font-family-sans);
+  font-size: var(--text-body-md);
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 88, 190, 0.2);
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input {
+  padding-right: 3rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: var(--spacing-space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-space-xs);
+  color: var(--color-outline);
+  transition: color 0.2s;
+}
+
+.toggle-password:hover {
+  color: var(--color-primary);
+}
+
+.toggle-password .material-symbols-outlined {
+  font-size: 1.25rem;
+}
+
+.error-message {
+  margin-top: var(--spacing-space-xs);
+  font-family: var(--font-family-sans);
+  font-size: var(--text-body-sm);
+  color: var(--color-error);
+  text-align: left;
+}
+
+.btn-primary {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-space-md) 0;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-space-sm);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-headline-md);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-container);
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  width: 100%;
+  background-color: var( --color-surface-container-low);
+  color: var(--color-primary);
+  padding: var(--spacing-space-md) 0;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-space-sm);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-headline-md);
+  font-weight: 600;
+  margin-top: var(--spacing-space-xs);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-container-highest);
+  transform: scale(0.98);
+}
+
+.social-section {
+  margin-top: var(--spacing-space-lg);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-space-sm);
+  margin-bottom: var(--spacing-space-md);
+}
+
+.divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--color-outline-variant);
+  opacity: 0.5;
+}
+
+.divider-text {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-label-md);
+  font-weight: var(--text-label-md--font-weight);
+  color: var(--color-on-surface-variant);
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-space-lg);
+}
+
+.social-btn {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-outline-variant);
+  background-color: var(--color-surface);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.social-btn:hover {
+  background-color: var(--color-surface-container-low);
+}
+
+.social-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.social-icon-svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-on-surface);
+}
+
+.social-icon-svg.facebook {
+  color: #1877F2;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: var(--spacing-space-sm);
+  justify-content: center;
+  margin: var(--spacing-space-xl) 0 var(--spacing-space-md);
+}
+
+.indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-outline-variant);
+  transition: all 0.2s;
+}
+
+.indicator.active {
+  width: 1.5rem;
+  background-color: var(--color-primary);
+}
+
+.btn-link {
+  background: transparent;
+  border: none;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-body-sm);
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-top: var(--spacing-space-sm);
+}
+
+.link-text {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.btn-link:hover .link-text {
+  text-decoration: underline;
+}
