@@ -21,7 +21,7 @@ const summaryRoutes = require('./src/routes/summaryRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Detect local IP for logging and CORS
+// Detect local IP for logging and CORS (optional)
 const os = require('os');
 const networkInterfaces = os.networkInterfaces();
 let localIp = 'localhost';
@@ -34,7 +34,7 @@ for (const interfaceName in networkInterfaces) {
   }
 }
 
-// CORS – allow both localhost and network IP
+// CORS – allow both localhost and network IP, plus production frontend
 const corsOptions = {
   origin: [
     'http://localhost:5173',
@@ -42,6 +42,7 @@ const corsOptions = {
     `http://${localIp}:5173`,
     'https://fintrack-frontend.vercel.app',
     /\.ngrok\.io$/,
+    /\.vercel\.app$/,
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -77,9 +78,25 @@ app.use('/api/summary', summaryRoutes);
 app.use('/api/logs', logRoutes);
 app.use('/api/preferences', preferenceRoutes);
 
-// Health check (public)
+// ========== Health check (public) ==========
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date() });
+});
+
+// ========== Debug route to test if server is alive ==========
+app.get('/api/test', (req, res) => {
+  res.json({ alive: true, message: 'Server is running' });
+});
+
+// ========== 404 handler for unmatched routes ==========
+app.use('*', (req, res) => {
+  res.status(404).json({ error: `Cannot ${req.method} ${req.originalUrl}` });
+});
+
+// ========== Global error handler ==========
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
 // Start server on all network interfaces
@@ -87,4 +104,10 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
   console.log(` - Local:   http://localhost:${PORT}`);
   console.log(` - Network: http://${localIp}:${PORT}`);
+  console.log('Registered routes:');
+  console.log('  POST /api/guest/init');
+  console.log('  POST /api/logs/log-error');
+  console.log('  GET  /api/health');
+  console.log('  GET  /api/test');
+  console.log('  ... and all other API routes');
 });
